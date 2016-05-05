@@ -1,0 +1,185 @@
+// Styles for tooltip
+@color_lightblue : #52b9e9;
+.d3-tip
+  line-height 1
+  font-weight bold
+  padding 12px
+  background rgba(0, 0, 0, 0.8)
+  color #fff
+  border-radius 2px
+  &:after
+    box-sizing border-box
+    display inline
+    font-size 10px
+    width 100%
+    line-height 1
+    color rgba(0, 0, 0, 0.8)
+    content "\25BC"
+    position absolute
+    text-align center
+  &.n
+    &:after
+      margin -1px 0 0 0
+      top 100%
+      left 0
+
+// Styles for charts
+#chartArea
+  width 102%
+  font-family inherit
+  margin-left -0.8em
+  .well
+    padding 1%
+    font-size 0.7em
+    cursor default
+    .graphTitle
+      h4, h5, h6
+        word-wrap break-word
+        overflow hidden
+        text-overflow ellipsis
+        white-space nowrap
+#chartArea
+	.axis
+		//font-size 9px
+	.maximizeChart
+		.bar_c
+			font-size 1em
+	.bar_c
+		display inline-block
+		font-size 0.7em
+		position relative
+		//padding-bottom 100%
+		width 100%
+		vertical-align middle
+		overflow hidden
+		svg
+			display inline-block
+			position absolute
+			top 0
+			left 0
+		.bar
+			fill #4682b4
+			&:hover
+				fill-opacity 0.8
+		.y
+			&.axis
+				path
+					//display none
+					fill none
+					stroke #000
+					shape-rendering crispEdges
+		.x
+			&.axis
+				path
+					//display none
+					fill none
+					stroke #000
+					shape-rendering crispEdges
+		g.brush rect.extent
+						fill-opacity 0.2
+		g.brush rect.background
+						fill rgba(81, 180, 191, 0.28)
+	.pie_c .axis path,
+		.axis line
+			fill none
+			stroke #000
+			shape-rendering crispEdges
+	.pie_c
+		display inline-block
+		font-size 0.7em
+		position relative
+		//padding-bottom 100%
+		width 100%
+		vertical-align middle
+		overflow hidden
+		svg
+			display inline-block
+			position absolute
+			top 0
+			left 0
+		.arc
+			path
+				stroke #fff
+			&:hover
+				fill-opacity 0.8
+	.area_c .axis path, .area_c .axis line
+		fill none
+		stroke #000
+		shape-rendering crispEdges
+	.area_c
+		.area
+			fill steelblue
+	.line_c .axis path, .line_c .axis line
+		fill none
+		stroke #000
+		shape-rendering crispEdges
+	.line_c
+		.x
+			&.axis
+				path
+					display none
+		.line
+			fill none
+			stroke steelblue
+			stroke-width 1.5px
+
+.legend_pie
+  rect
+    fill white
+    opacity 0.4
+
+//.spinner
+  //display inline-block
+  //opacity 0
+  //width 0
+  //transition opacity 0.25s, width 0.25s
+
+.template
+  &.active
+    cursor progress
+    .spinner
+      opacity 1
+      width auto
+
+.panel
+  .panel-heading
+    padding 0.2em 15px 0.1em 15px
+    border-bottom 0px solid transparent
+
+.chartPanelOptions, .editReport
+  float right
+  margin-right 1em
+
+  //.pdf
+   // color red
+  //.word
+  //  color blue
+  //.excel
+   // color green
+
+.save_chartPanel
+  color #000
+
+.info-button, .help-button   width 1em   height 1em   text-align center
+padding 0 0   font-size 12px   line-height 1em   border-radius 0.5em   &:hover
+fill-opacity 0.8     font-size 14px     cursor pointer
+
+.help-button
+	border-radius 1em
+	padding 0.3em 0em
+	font-size 16px
+	color #2FAEB9
+	&:hover
+		fill-opacity 0.8
+		font-size 16px
+
+.ChartNew
+	padding-bottom 3em
+
+#max_chart
+	width 100%
+
+.filtered
+	a
+		color grey
+		font-size 0.8em

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  </head>
+
+  <body>
+  	<div class="btn-group" data-toggle="buttons" id="chartTab" style="display:none;">
+              <label class="btn btn-default btn-sm dropdown-toggle" id="chartButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Click to to see the Visualization">
+                <input type="radio" name="chart"/>
+								<i class="fa fa-pie-chart"></i> Charts
+                <span id="chart-datapoints">
+
+                </span>
+								<span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </label>
+              <!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>-->
+              <button type="button" class="btn btn-sm btn-default dropdown-toggle" id="createChart_id" aria-haspopup="true" aria-expanded="false">
+                <span class="glyphicon glyphicon-plus"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+
+              <ul class="dropdown-menu" role="menu">
+                <ul class="nav nav-pills" id="chartpoitypes">
+                </ul>
+              </ul>
+            </div>
+    <div id="chartArea"> <!-- for charts -->
+          </div>
+    
+  </body>
+
+</html>
