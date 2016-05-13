@@ -39,10 +39,12 @@ gulp.task('styles', ['clean-styles'], function(){
 gulp.task('wiredep', function(){     
 	log("Running Wiredep to inject resources");     
 	var options = config.getWiredepDefaultOptions(); //TODO
+	var wiredep = require('wiredep').stream;
 	return gulp
 		.src(config.index)
 		.pipe($.wiredep(options))
-		.pipe() 
+		.pipe($.inject(gulp.src(config.js)))
+		.pipe(gulp.dest('./')); //TODO config ? 
 	});
 
 gulp.task('clean-styles', function(done){

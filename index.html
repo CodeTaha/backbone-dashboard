@@ -2,6 +2,10 @@
 <html>
 
   <head>
+  <!-- bower:css -->
+  <link rel="stylesheet" href="res/vendor/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="res/vendor/bootstrap/dist/css/bootstrap-theme.css" />
+  <!-- endbower -->
   </head>
 
   <body>
@@ -10,7 +14,7 @@
                 <input type="radio" name="chart"/>
 								<i class="fa fa-pie-chart"></i> Charts
                 <span id="chart-datapoints">
-
+  
                 </span>
 								<span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
@@ -31,7 +35,26 @@
             </div>
     <div id="chartArea"> <!-- for charts -->
           </div>
-    
+	  
+	  <!-- bower:js -->
+	  <script src="res/vendor/jquery/dist/jquery.js"></script>
+	  <script src="res/vendor/underscore/underscore.js"></script>
+	  <script src="res/vendor/backbone/backbone.js"></script>
+	  <script src="res/vendor/coffee-script/lib/coffee-script/coffee-script.js"></script>
+	  <script src="res/vendor/bootstrap/dist/js/bootstrap.js"></script>
+	  <script src="res/vendor/d3/d3.js"></script>
+	  <!-- endbower -->
+
+	  <!-- inject:js -->
+	  <script src="/res/js/models/ChartModel.js"></script>
+	  <script src="/res/js/views/ChartBox.js"></script>
+	  <script src="/res/js/views/ChartNew.js"></script>
+	  <script src="/res/js/views/ChartPanel.js"></script>
+	  <script src="/res/js/views/ChartTab.js"></script>
+	  <script src="/res/js/views/ChartView.js"></script>
+	  <script src="/res/js/collections/ChartCollection.js"></script>
+	  <!-- endinject -->
+
   </body>
 
 </html>
