@@ -2,9 +2,16 @@
   "name": "backbone-dashboard",
   "version": "1.0.0",
   "description": "Using d3 and backbone to create interactive chart dashboard",
-  "main": "index.js",
-  "dependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "connect": "^3.4.1",
+    "express": "^4.13.4",
+    "serve-static": "^1.10.2"
+  },
   "devDependencies": {
+    "browser-sync": "^2.12.8",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
@@ -12,16 +19,16 @@
     "gulp-if": "^2.0.0",
     "gulp-inject": "^4.0.0",
     "gulp-load-plugins": "^1.2.2",
+    "gulp-newer": "^1.1.0",
+    "gulp-nodemon": "^2.0.7",
     "gulp-plumber": "^1.1.0",
     "gulp-print": "^2.0.1",
     "gulp-sourcemaps": "^2.0.0-alpha",
     "gulp-stylus": "^2.3.1",
+    "gulp-task-listing": "^1.0.1",
     "gulp-util": "^3.0.7",
     "gulp-wiredep": "0.0.0",
     "yargs": "^4.6.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "codetaha <taha.kachwala21@gmail.com>",
   "license": "ISC",

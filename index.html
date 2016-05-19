@@ -5,7 +5,12 @@
   <!-- bower:css -->
   <link rel="stylesheet" href="res/vendor/bootstrap/dist/css/bootstrap.css" />
   <link rel="stylesheet" href="res/vendor/bootstrap/dist/css/bootstrap-theme.css" />
+  <link rel="stylesheet" href="res/vendor/components-font-awesome/css/font-awesome.css" />
   <!-- endbower -->
+
+  <!-- inject:css -->
+  <link rel="stylesheet" href="/res/css/charts.css">
+  <!-- endinject -->
   </head>
 
   <body>
@@ -32,27 +37,34 @@
                 <ul class="nav nav-pills" id="chartpoitypes">
                 </ul>
               </ul>
-            </div>
+    </div>
     <div id="chartArea"> <!-- for charts -->
-          </div>
+    </div>
 	  
 	  <!-- bower:js -->
 	  <script src="res/vendor/jquery/dist/jquery.js"></script>
 	  <script src="res/vendor/underscore/underscore.js"></script>
 	  <script src="res/vendor/backbone/backbone.js"></script>
-	  <script src="res/vendor/coffee-script/lib/coffee-script/coffee-script.js"></script>
 	  <script src="res/vendor/bootstrap/dist/js/bootstrap.js"></script>
 	  <script src="res/vendor/d3/d3.js"></script>
 	  <!-- endbower -->
-
+	  <script>
+	  	_.templateSettings = {
+		    interpolate: /\{\{(.+?)\}\}/g,
+		    evaluate: /\{\%(.+?)\%\}/g
+		};
+	  </script>
 	  <!-- inject:js -->
-	  <script src="/res/js/models/ChartModel.js"></script>
-	  <script src="/res/js/views/ChartBox.js"></script>
-	  <script src="/res/js/views/ChartNew.js"></script>
-	  <script src="/res/js/views/ChartPanel.js"></script>
-	  <script src="/res/js/views/ChartTab.js"></script>
-	  <script src="/res/js/views/ChartView.js"></script>
-	  <script src="/res/js/collections/ChartCollection.js"></script>
+	  <script src="/res/js/charts.js"></script>
+	  <script src="/res/js/d3.tip.js"></script>
+	  <script src="/res/js/backbone/models/ChartModel.js"></script>
+	  <script src="/res/js/backbone/collections/ChartCollection.js"></script>
+	  <script src="/res/js/backbone/views/ChartBox.js"></script>
+	  <script src="/res/js/backbone/views/ChartNew.js"></script>
+	  <script src="/res/js/backbone/views/ChartPanel.js"></script>
+	  <script src="/res/js/backbone/views/ChartTab.js"></script>
+	  <script src="/res/js/backbone/views/ChartView.js"></script>
+	  <script src="/res/js/backbone/portal.js"></script>
 	  <!-- endinject -->
 
   </body>

@@ -9,7 +9,7 @@ ChartView = Backbone.View.extend {
 	# FUNCTION: initialize
 	initialize: (options) ->
 		_.bindAll this, 'render', 'renderReport', 'getTemplates', 'fetchTemplateDetails', 'renderTemplates','callChartTab', 'updateSelections', 'createNewChart' # binding all the functions using this/@
-		
+		console.log "ChartView started"
 		@username = options.username
 		@user_id = options.user_id
 		@key = options.key
@@ -17,8 +17,8 @@ ChartView = Backbone.View.extend {
 		#console.log "ChartView Init -> 1"
 		@$el.empty()
 		@counter = 1 #initializing counter to give ids
-		@$el.hide() #hiding so that the charts dont rendr on homepage
-
+		#@$el.hide() #hiding so that the charts dont rendr on homepage
+		@$el.show()
 		@templates = [] # To stores template data
 
 		@chartSelectionModel = new poimapper.models.ChartSelectionModel()
@@ -48,7 +48,7 @@ ChartView = Backbone.View.extend {
 					#startD = new Date("2016-04-14 16:09:01.0")
 					#lastLogin = new Date(window.clientPersistModel.get("lastLogin"))
 					#showVid = (if lastLogin<startD then true else false)
-					showVid = (if window.clientPersistModel.get("chartVid") is "true" then true else false)
+					showVid = false#(if window.clientPersistModel.get("chartVid") is "true" then true else false)
 					
 					if showVid
 						bootbox.dialog {
@@ -228,7 +228,7 @@ ChartView = Backbone.View.extend {
 		#form = if root.formCollection.get(report_data.template_params.poi)
 		#form = if form == undefined then '' else form.get("ref")
 		#console.log("reportdata", JSON.stringify(report_data))
-		form = (if root.formCollection.get(report_data.template_params.poi)? then root.formCollection.get(report_data.template_params.poi) else '')
+		form = ''#(if root.formCollection.get(report_data.template_params.poi)? then root.formCollection.get(report_data.template_params.poi) else '')
 		report_data.details = {}
 		report_data.details.form = form
 
@@ -284,6 +284,7 @@ ChartView = Backbone.View.extend {
 
 	# renderTemplates: getTemplates() Fetches the name and IDS of all the templates which is later filtered by another function to use only json templates
 	getTemplates: ()->
+		return
 		self = this
 		$.ajax
 						type: "GET"

@@ -1,16 +1,17 @@
 module.exports = function(){
 	var src = './src/';
+	var server = './src/server/'
 	var config = {
 		temp: './res/.tmp',
 		
 		/*
 		* For .coffee files
 		*/
-		coffee:[
-			src + 'js/coffee_files/**/*.coffee',
-			src + 'js/coffee_files/*.coffee'
+		backbone:[
+			src + 'js/backbone_files/**/*.coffee',
+			src + 'js/backbone_files/*.coffee'
 			],
-		coffee_dest: './res/js',
+		backbone_dest: './res/js/backbone',
 
 		/* For .styl files*/
 		styl: [
@@ -20,7 +21,10 @@ module.exports = function(){
 		index: './index.html',
 		js: [
 			'./res/js/**.js',
-			'./res/js/**/**.js'
+			'./res/js/backbone/models/**.js',
+			'./res/js/backbone/collections/**.js',
+			'./res/js/backbone/views/**.js',
+			'./res/js/backbone/**.js',
 		],
 
 		/*
@@ -30,7 +34,13 @@ module.exports = function(){
 			json: require('./bower.json'),
 			directory: './res/vendor/',
 			ignorePath: '../../'
-		}
+		},
+		/*
+		* Node Settings
+		*/
+		server: server,
+		defaultPort:3000,
+		nodeServer: './server.js'
 
 	};
 	config.getWiredepDefaultOptions = function() {
