@@ -13,11 +13,14 @@ ChartBox = Backbone.View.extend {
 		@model.bind('remove', this.unrender)
 		@maxMinFlag = false #for maximizing minimizing charts
 	render: () ->
+		###
 		switch @model.get("chart_type")
 			when 'bar'
 				@chart_type='bar'
 			when 'pie'
 				@chart_type='pie'
+		###
+		@chart_type = @model.get("chart_type")
 		
 		location = if @model.get("location") != null then "<span class='glyphicon glyphicon-map-marker' aria-hidden='true'></span>"+@model.get("location") else "<h5>&nbsp;</h5>"
 		#console.log("location", @model.attributes, location)
@@ -63,13 +66,20 @@ ChartBox = Backbone.View.extend {
 
 	# Creates the chart based on chart_type
 	createChart: () ->
-		#console.log("createChart", @model)
+		#console.log("createChart", @model,@chart_type)
 		switch @chart_type
 			when 'bar'
 				@bar((err, success)->
 					return)
 			when 'pie'
 				@pie((err, success)->
+					return)
+			when 'area'
+				
+				@area((err, success)->
+					return)
+			when 'line'
+				@line((err, success)->
 					return)
 
 	# maximizes chart size on click
@@ -107,53 +117,27 @@ ChartBox = Backbone.View.extend {
 		cb null,true
 
 	# Calls AREA chart
-	area: (cntr, cb) ->
-		data = undefined
-		parseDate = undefined
+	area: (cb) ->
+		#console.log "Calling area"
+		data =  JSON.parse(@model.get("chart_variables")[0].value)
 		parseDate = d3.time.format('%d-%b-%y').parse
-		chart_local=@chart 
-		@$el.append @viz_template(
-				'graph_title': 'Area_' + cntr,
-				'counter': cntr,
-				'chart_type': 'area_c',
-				"data_id":"null"
-				)
-		data = d3.json('res/js/areaData.js', (error, data2) ->
-			if error
-				throw error
-			data2.forEach (d) ->
-				d.date = parseDate(d.date)
-				d.close = +d.close
-				return
-			chart_local.area '#viz_' + cntr, data2, 'date', 'close'
-			data2
-		)
+		cid = @model.cid
+		@chart.area '#viz_' + cid, data, 'x', 'y'
 
 		cb null, true
 
 	# Calls LINE chart
-	line: (cntr, cb) ->
+	line: (cb) ->
+		#console.log "Calling area"
+		data =  JSON.parse(@model.get("chart_variables")[0].value)
 		parseDate = d3.time.format('%d-%b-%y').parse
-		@$el.append @viz_template(
-			'graph_title': 'Line' + cntr
-			'counter': cntr
-			'chart_type': 'line_c'
-			'data_id': 'null')
-		chart_local=@chart
-		data = d3.json('res/js/areaData.js', (error, data2) ->
-			if error
-				throw error
-			data2.forEach (d) ->
-				d.date = parseDate(d.date)
-				d.close = +d.close
-				return
-			chart_local.line '#viz_' + cntr, data2, 'date', 'close'
-			data2
-		)
+		cid = @model.cid
+		@chart.line '#viz_' + cid, data, 'x', 'y'
 
 		cb null, true
 
-# Template used to render .well	with charts for chartBoxes
+
+	# Template use to render .well	with charts for chartBoxes
 	viz_template:_.template '
 							<div class="well chartBox">
 								<div class="chartTitle row-fluid">

@@ -139,12 +139,17 @@ ChartPanel = Backbone.View.extend {
 						
 			else
 				$.each value.chart_variables, (key2,value2)=>
+					#console.log "Key2 Value2", key2, value2
 					temp_key = key2.split("-&")
 
 					if temp_key.length is 2
 						key2 = temp_key[1]
-					#console.log "lala", key2, temp_key
-					fdata.push {"key":key2, "value": parseInt(value2)}
+						
+					if value.chart_type is 'area' or value.chart_type is 'line'
+						unless key2 is 'No response'
+							fdata.push {"key":key2, "value": value2}
+					else
+						fdata.push {"key":key2, "value": parseInt(value2)}
 
 			chartModel.set chart_variables: fdata
 
@@ -214,7 +219,7 @@ ChartPanel = Backbone.View.extend {
 		template_data = @model.get("template_data")
 		template_data.url = template_url
 		@model.set template_data: template_data
-		#console.log "fetchReport", JSON.stringify(@model), template_url
+		console.log "fetchReport", JSON.stringify(@model), template_url
 
 		self = @
 
@@ -287,7 +292,7 @@ ChartPanel = Backbone.View.extend {
 					template_url = "#{baseUrl}app/jasper/#{t_par.poi}/#{t_par.includelocation}/#{t_par.newdata}/#{t_par.chart}/#{t_par.type}?XXXquestions=" + t_par.questions + "&locs=" + t_par.locs + "&levels=" + t_par.levels + "&users=" + t_par.users + "&fromdate=" + t_par.fromdate + "&todate=" + t_par.todate + "&timeinfo=" + t_par.timeinfo + "&userinfo=" + t_par.userinfo + "&legendid=" + t_par.legendid + "&reportType=" + t_par.reportType + "&locationLevels=" + t_par.locationLevels + "&combinenumericfields=" + t_par.combinenumericfields + "&timeseriestype=" + t_par.timeseriestype + "&locationLevelDataFilter=" + t_par.locationLevelDataFilter + "&orientation=" + t_par.orientation + "&rowquestionid=" + t_par.rowquestionid + "&groupid=" + t_par.groupid + "&format=" + t_par.format + "&excludenull=" + t_par.excludenull + "&subgroup=" + t_par.subgroup
 
 					json = "{ \"report_name\" : \"" + self.model.get("report_title") + "\" , \"parameters\" : \"" + template_url + "\"}"
-					console.log "Saving REport Template", json
+					#console.log "Saving REport Template", json
 					$.ajax
 							type: "POST"
 							data: json
@@ -358,7 +363,7 @@ ChartPanel = Backbone.View.extend {
 		#console.log 'auths', key, username, user_id
 
 		template_url = "#{baseUrl}app/jasper/#{t_par.poi}/#{t_par.includelocation}/#{t_par.newdata}/#{t_par.chart}/#{t_par.type}?key=" + key + "&userid="+ username + "&user_id="+ user_id + "&questions=" + t_par.questions + "&locs=" + t_par.locs + "&levels=" + t_par.levels + "&users=" + t_par.users + "&fromdate=" + t_par.fromdate + "&todate=" + t_par.todate + "&timeinfo=" + t_par.timeinfo + "&userinfo=" + t_par.userinfo + "&legendid=" + t_par.legendid + "&reportType=" + t_par.reportType + "&locationLevels=" + t_par.locationLevels + "&combinenumericfields=" + t_par.combinenumericfields + "&timeseriestype=" + t_par.timeseriestype + "&locationLevelDataFilter=" + t_par.locationLevelDataFilter + "&orientation=" + t_par.orientation + "&rowquestionid=" + t_par.rowquestionid + "&groupid=" + t_par.groupid + "&format=" + format + "&excludenull=" + t_par.excludenull + "&subgroup=" + t_par.subgroup
-		console.log "download", template_url
+		#console.log "download", template_url
 		iframe = document.createElement 'iframe'
 		iframe.height = 0
 		iframe.width = 0
@@ -377,7 +382,7 @@ ChartPanel = Backbone.View.extend {
 	# FUNCTION: save_close() Save and close @chartNew menu for creating new charts
 	save_close: () ->
 		self = @
-		console.log("done")
+		#console.log("done")
 		bootbox.confirm {
 				message: 'Are you sure you are done editing the report?<br/> Proceed ',
 				buttons: {

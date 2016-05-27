@@ -1,5 +1,5 @@
 // Styles for tooltip
-@color_lightblue : #52b9e9;
+
 .d3-tip
   line-height 1
   font-weight bold
@@ -25,103 +25,129 @@
 
 // Styles for charts
 #chartArea
-  width 102%
-  font-family inherit
-  margin-left -0.8em
-  .well
-    padding 1%
-    font-size 0.7em
-    cursor default
-    .graphTitle
-      h4, h5, h6
-        word-wrap break-word
+    width 102%
+    font-family inherit
+    margin-left -0.8em
+    .well
+        padding 1%
+        font-size 0.7em
+        cursor default
+        .graphTitle
+            h4, h5, h6
+            word-wrap break-word
+            overflow hidden
+            text-overflow ellipsis
+            white-space nowrap
+
+    .axis
+            //font-size 9px
+    .maximizeChart
+            .bar_c
+                    font-size 1em
+    .bar_c
+            display inline-block
+            font-size 0.7em
+            position relative
+            //padding-bottom 100%
+            width 100%
+            vertical-align middle
+            overflow hidden
+            svg
+                display inline-block
+                position absolute
+                top 0
+                left 0
+            .bar
+                fill #4682b4
+                &:hover
+                    fill-opacity 0.8
+            .y
+                &.axis
+                    path
+                        //display none
+                        fill none
+                        stroke #000
+                        shape-rendering crispEdges
+            .x
+                &.axis
+                    path
+                        //display none
+                        fill none
+                        stroke #000
+                        shape-rendering crispEdges
+
+            g.brush rect.extent
+                fill-opacity 0.2
+
+            g.brush rect.background
+                fill rgba(81, 180, 191, 0.28)
+
+    .pie_c 
+        display inline-block
+        font-size 0.7em
+        position relative
+        //padding-bottom 100%
+        width 100%
+        vertical-align middle
         overflow hidden
-        text-overflow ellipsis
-        white-space nowrap
-#chartArea
-	.axis
-		//font-size 9px
-	.maximizeChart
-		.bar_c
-			font-size 1em
-	.bar_c
-		display inline-block
-		font-size 0.7em
-		position relative
-		//padding-bottom 100%
-		width 100%
-		vertical-align middle
-		overflow hidden
-		svg
-			display inline-block
-			position absolute
-			top 0
-			left 0
-		.bar
-			fill #4682b4
-			&:hover
-				fill-opacity 0.8
-		.y
-			&.axis
-				path
-					//display none
-					fill none
-					stroke #000
-					shape-rendering crispEdges
-		.x
-			&.axis
-				path
-					//display none
-					fill none
-					stroke #000
-					shape-rendering crispEdges
-		g.brush rect.extent
-						fill-opacity 0.2
-		g.brush rect.background
-						fill rgba(81, 180, 191, 0.28)
-	.pie_c .axis path,
-		.axis line
-			fill none
-			stroke #000
-			shape-rendering crispEdges
-	.pie_c
-		display inline-block
-		font-size 0.7em
-		position relative
-		//padding-bottom 100%
-		width 100%
-		vertical-align middle
-		overflow hidden
-		svg
-			display inline-block
-			position absolute
-			top 0
-			left 0
-		.arc
-			path
-				stroke #fff
-			&:hover
-				fill-opacity 0.8
-	.area_c .axis path, .area_c .axis line
-		fill none
-		stroke #000
-		shape-rendering crispEdges
-	.area_c
-		.area
-			fill steelblue
-	.line_c .axis path, .line_c .axis line
-		fill none
-		stroke #000
-		shape-rendering crispEdges
-	.line_c
-		.x
-			&.axis
-				path
-					display none
-		.line
-			fill none
-			stroke steelblue
-			stroke-width 1.5px
+        .axis path,
+            .axis line
+                fill none
+                stroke #000
+                shape-rendering crispEdges
+        svg
+                display inline-block
+                position absolute
+                top 0
+                left 0
+        .arc
+                path
+                    stroke #fff
+                &:hover
+                    fill-opacity 0.8
+
+    .area_c
+        display inline-block
+        font-size 0.7em
+        position relative
+        //padding-bottom 100%
+        width 100%
+        vertical-align middle
+        overflow hidden
+        .axis path, .axis line
+            fill none
+            stroke #000
+            shape-rendering crispEdges
+        .area
+            fill steelblue
+            &:hover
+                fill-opacity 0.8
+        svg
+                display inline-block
+                position absolute
+                top 0
+                left 0
+
+    .line_c 
+        display inline-block
+        font-size 0.7em
+        position relative
+        //padding-bottom 100%
+        width 100%
+        vertical-align middle
+        overflow hidden
+        .axis path, .axis line
+            fill none
+            stroke #000
+            shape-rendering crispEdges
+        .x
+            /*&.axis
+                path
+                    display none*/
+        .line
+            fill none
+            stroke steelblue
+            stroke-width 1.5px
 
 .legend_pie
   rect
@@ -160,9 +186,18 @@
 .save_chartPanel
   color #000
 
-.info-button, .help-button   width 1em   height 1em   text-align center
-padding 0 0   font-size 12px   line-height 1em   border-radius 0.5em   &:hover
-fill-opacity 0.8     font-size 14px     cursor pointer
+.info-button, .help-button
+  width 1em
+  height 1em
+  text-align center
+  padding 0 0
+  font-size 12px
+  line-height 1em
+  border-radius 0.5em
+  &:hover
+    fill-opacity 0.8
+    font-size 14px
+    cursor pointer
 
 .help-button
 	border-radius 1em
@@ -174,7 +209,7 @@ fill-opacity 0.8     font-size 14px     cursor pointer
 		font-size 16px
 
 .ChartNew
-	padding-bottom 3em
+	padding-bottom 4em
 
 #max_chart
 	width 100%

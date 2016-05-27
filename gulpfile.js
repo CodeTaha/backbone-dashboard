@@ -61,15 +61,25 @@ gulp.task('inject',['wiredep', 'styles'], function(){
 		.pipe(gulp.dest('./')); //TODO config ? 
 });
 
-gulp.task('clean-styles', function(done){
-	var files = config.styl_dest +'**/*.css'
-	clean(files, done);
-});
-
 gulp.task('watch', function(done){
 	gulp.watch([config.styl], ['styles']);
 	gulp.watch([config.backbone], ['backbone']);
 	startBroswerSync();
+});
+
+gulp.task('optimize', ['inject'], function(){
+	log('Optimize the javascript, css, html');
+
+	return gulp
+		.src(config.index)
+		.pipe($.plumber())
+		// TODO processing
+		.pipe(gulp.dest(config.build));
+});
+
+gulp.task('clean-styles', function(done){
+	var files = config.styl_dest +'**/*.css'
+	clean(files, done);
 });
 
 gulp.task('serve-dev', ['inject'], function(){
